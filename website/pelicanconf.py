@@ -10,7 +10,7 @@ import os
 AUTHOR = u'Jaehak Yu'
 SITENAME = u'Data Analysis Project for Team Red Bear'
 SITESUBTITLE = u'Template using the iPython notebook'
-GITHUB_REPOSITORY_URL = u'https://github.com/jaehak999/data-analysis-template.git'
+GITHUB_REPOSITORY_URL = u'https://github.com/jaehak999/redbear.git'
 
 ###################################################
 # FINER WEBSITE CONF (Defaults should be okay)
