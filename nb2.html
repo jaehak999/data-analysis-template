@@ -1720,7 +1720,7 @@ init_mathjax();
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Data Cleaning"/>
             <meta property="og:url" content="http://jaehak999.github.io/redbear/nb2.html"/>
-            <meta property="og:description" content="In this notebook, you'll load the raw data into R or Pandas dataframe from the ./data/raw directory using the functions and classes (written during the data gathering phase) in the ./script directory perform visual exploration on your data variables to detect anomalies, errors, outliers, interesting features etc. clean ..."/>
+            <meta property="og:description" content="Team members responsible for this notebook: Team Member 1: Jaehak Yu — Responsible for isolating the variables we find interesting and noting which rows have NA values Team Member 2: Ha Nguyen — Responsible for converting isolated variables into rates/percentages for good data comparison and compiling all variables into a cleaned ..."/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://jaehak999.github.io/redbear/theme/css/bootstrap.min.css" type="text/css"/>
@@ -1815,113 +1815,12 @@ Data Analysis Project for Team Red Bear            </a>
                 </div>
                 <p>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this notebook, you'll</p>
-<ul>
-<li><p><strong>load the raw data into R or Pandas dataframe</strong> from the <code>./data/raw</code> directory using the functions and classes (written during the data gathering phase) in the <code>./script</code> directory</p></li>
-<li><p><strong>perform visual exploration</strong> on your data variables to detect anomalies, errors, outliers, interesting features etc.</p></li>
-<li><p><strong>clean categorical and quantitative variables</strong> (by removing observations and variables with too many missing values, by consolidating categorical variables, by selecting an appropriate subset of variables and observations for later analysis, etc.)</p></li>
-<li><p><strong>save the cleaned data</strong> into csv files in the <code>./data/cleaned</code> directory</p></li>
-<li><p><strong>save interesting graphics</strong> you obtained during visual exploration into the <code>./visualiation</code> directory</p></li>
-</ul>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="team-members-responsible-for-this-notebook">Team members responsible for this notebook:</h2>
-<p>List the team members contributing to this notebook, along with their responsabilities:</p>
 <ul>
 <li>Team Member 1: Jaehak Yu — Responsible for isolating the variables we find interesting and noting which rows have NA values</li>
 <li>Team Member 2: Ha Nguyen — Responsible for converting isolated variables into rates/percentages for good data comparison and compiling all variables into a cleaned table</li>
 <li>Team Member 3: Micky Wong — Responsible for removing the NA rows from the cleaned table and uploading it as a csv file into the ./data/cleaned folder</li>
 </ul>
-<p>I advise you to work at least in pairs for each project notebook, as you did for the homework assignments. Of course, all team members may participate to each notebook.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I'll load the plant data in xml format into a R data frame using the</p>
-<pre><code>create_df_from_plant_xml(file)</code></pre>
-<p>function contained in the R script</p>
-<pre><code>    ./script/plant_df-R</code></pre>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To load the function into a R cell, one needs to use the</p>
-<pre><code>source(R_script_file)</code></pre>
-<p>command in R, which works in a similar way as the</p>
-<pre><code>import module</code></pre>
-<p>command in Python:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">source</span><span class="p">(</span><span class="s">&#39;./script/plant_df-R&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we can create a data frame directly from the XML file using the functin contained in the scrip above.</p>
-<p>If you wish to perform the cleaning using Pandas data frames instead of R data frames, one make the R data frame available to Python cells by using the R magic command:</p>
-<pre><code>%%R -d df_name</code></pre>
-<p>To know more on how to pass variables back and forth between R and Python cells, please have a look at the notebook <a href="http://nbviewer.ipython.org/url/github.com/ipython/ipython/raw/master/examples/notebooks/R%20Magics.ipynb">here</a>.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span> <span class="o">-</span><span class="n">d</span> <span class="n">data</span>
-
-<span class="n">library</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">create_df_from_plant_xml</span><span class="p">(</span><span class="s">&#39;./data/raw/plant.xml&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's load our data into a Pandas data frame:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The actual data cleaning can now begins!</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Team-Red-Bear:-Data-Cleaning">Team Red Bear: Data Cleaning<a class="anchor-link" href="#Team-Red-Bear:-Data-Cleaning">&#182;</a></h1>
@@ -1941,7 +1840,7 @@ In&nbsp;[]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
+In&nbsp;[35]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span>
@@ -1971,7 +1870,7 @@ The rmagic extension is already loaded. To reload it, use:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[36]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -1984,6 +1883,10 @@ In&nbsp;[4]:
 <span class="n">poverty</span> <span class="o">=</span> <span class="n">demographics</span><span class="p">[[</span><span class="s">&#39;Poverty&#39;</span><span class="p">]]</span>
 
 <span class="n">county_names</span> <span class="o">=</span> <span class="n">demographics</span><span class="p">[[</span><span class="s">&#39;CHSI_County_Name&#39;</span><span class="p">]]</span>
+
+<span class="n">state_names</span> <span class="o">=</span> <span class="n">demographics</span><span class="p">[[</span><span class="s">&#39;CHSI_State_Name&#39;</span><span class="p">]]</span>
+
+<span class="n">FIPS</span> <span class="o">=</span> <span class="n">demographics</span><span class="p">[[</span><span class="s">&#39;County_FIPS_Code&#39;</span><span class="p">]]</span>
 </pre></div>
 
 </div>
@@ -1996,7 +1899,7 @@ In&nbsp;[4]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[5]:
+In&nbsp;[37]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2015,7 +1918,7 @@ In&nbsp;[5]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[38]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2052,7 +1955,7 @@ In&nbsp;[6]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[39]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2083,7 +1986,7 @@ In&nbsp;[7]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[8]:
+In&nbsp;[40]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2115,7 +2018,7 @@ In&nbsp;[8]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[41]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2129,7 +2032,7 @@ In&nbsp;[9]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[42]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2161,7 +2064,7 @@ In&nbsp;[10]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[43]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2175,7 +2078,7 @@ In&nbsp;[11]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[44]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2193,7 +2096,7 @@ In&nbsp;[12]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[13]:
+In&nbsp;[45]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2215,60 +2118,12 @@ In&nbsp;[13]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[52]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
 <span class="n">New_Cleaned_Table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">county_names</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">population_density</span><span class="p">,</span> <span class="n">poverty</span><span class="p">,</span> <span class="n">avg_life_expectancy</span><span class="p">,</span> <span class="n">unhealthy_days</span><span class="p">,</span> <span class="n">health_status</span><span class="p">,</span> <span class="n">uninsured_rate</span><span class="p">,</span> <span class="n">smoker</span><span class="p">,</span> <span class="n">obesity</span><span class="p">,</span> <span class="n">primary_care_physicians</span><span class="p">,</span> <span class="n">no_HS_diploma_rate</span><span class="p">,</span> <span class="n">unemployed_rate</span><span class="p">,</span> <span class="n">depression_rate</span><span class="p">,</span> <span class="n">drug_rate</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">New_Cleaned_Table</span><span class="p">))</span>
 </pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-  county_names population_size population_density poverty avg_life_expectancy
-1      Autauga           48612                 82    10.4                74.9
-2      Baldwin          162586                102    10.2                76.6
-3      Barbour           28414                 32    22.1                74.5
-4         Bibb           21516                 35    16.8                73.2
-5       Blount           55725                 86    11.9                76.1
-6      Bullock           11055                 18    26.2                71.9
-  unhealthy_days health_status uninsured_rate  smoker obesity
-1            7.5          21.8       11.70493    26.6    24.5
-2            6.7          15.4       12.17694    24.6    23.6
-3        -1111.1          21.4       18.04040    17.7    25.6
-4        -1111.1          19.4       15.40714 -1111.1 -1111.1
-5            7.9          25.8       14.59130    23.6    24.2
-6        -1111.1       -1111.1       20.75984 -1111.1 -1111.1
-  primary_care_physicians no_HS_diploma_rate unemployed_rate depression_rate
-1                    45.3           13.76203        1.592199        5.513042
-2                    67.0           12.45741        1.557945        5.753263
-3                    45.8           23.68199        2.002534        5.694376
-4                    41.8           24.88846        1.663878        5.660904
-5                    16.2           20.06460        1.469717        5.677882
-6                    54.3           25.76210        2.957938        5.662596
-  drug_rate
-1  4.924710
-2  4.768553
-3  4.937707
-4  4.805726
-5  4.800359
-6  5.110810
-
-</pre>
-
-</div>
-</div>
 
 </div>
 </div>
@@ -2280,7 +2135,7 @@ In&nbsp;[15]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[53]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2341,54 +2196,13 @@ In&nbsp;[16]:
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[17]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
- [1] &quot;county_names&quot;            &quot;population_size&quot;        
- [3] &quot;population_density&quot;      &quot;poverty&quot;                
- [5] &quot;avg_life_expectancy&quot;     &quot;unhealthy_days&quot;         
- [7] &quot;health_status&quot;           &quot;uninsured_rate&quot;         
- [9] &quot;smoker&quot;                  &quot;obesity&quot;                
-[11] &quot;primary_care_physicians&quot; &quot;no_HS_diploma_rate&quot;     
-[13] &quot;unemployed_rate&quot;         &quot;depression_rate&quot;        
-[15] &quot;drug_rate&quot;              
-
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we convert it into a csv file to be put into the &quot;cleaned&quot; folder for everyone to access.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[54]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
@@ -2399,13 +2213,31 @@ In&nbsp;[18]:
 </div>
 
 </div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Additionally, I single out the data for obesity in order to create a visualization specifically for a map that we intend to make. This makes the process of mapmaking much simpler for us in the long run. We intend to create a visual display on the US of obesity in American counties. We hope that this map will give us a sense of what the distribution of obesity actually looks like in the United States.</p>
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[55]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">obesity_map</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">FIPS</span><span class="p">,</span> <span class="n">state_names</span><span class="p">,</span> <span class="n">county_names</span><span class="p">,</span> <span class="n">obesity</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[51]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">obesity_map</span><span class="p">,</span> <span class="nb">file</span> <span class="o">=</span> <span class="s">&#39;./data/cleaned/obesitymap.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
